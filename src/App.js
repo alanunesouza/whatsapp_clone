@@ -1,20 +1,32 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import firebase from 'firebase';
+import ReduxThunk from 'redux-thunk';
 
 import Routes from './Routes';
 import reducers from './reducers';
 
-export default class App extends Component {
+class App extends Component {
+
+  componentDidMount() {
+    //initialize Firebase
+    firebase.initializeApp({
+      apiKey: "AIzaSyAFWrn6d8IlkGdJ-9L1ZLYsFd_G6VhjmAg",
+      authDomain: "whatsapp-clone-e2dea.firebaseapp.com",
+      databaseURL: "https://whatsapp-clone-e2dea.firebaseio.com",
+      projectId: "whatsapp-clone-e2dea",
+      storageBucket: "whatsapp-clone-e2dea.appspot.com",
+      messagingSenderId: "102281427237"
+    });
+  }
+
   render() {
     return (
-      <Provider store={createStore(reducers)} style={{ flex: 1 }}>
+      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))} style={{ flex: 1 }}>
         <Routes />
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-});
+export default App;
