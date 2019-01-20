@@ -1,14 +1,40 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 
-class Principal extends Component {
-    render() {
-        return (
-            <View style={{ marginTop: 100 }}>
-                <Text>Página principal da aplicação</Text>
-            </View>
-        )
-    }
+const Conversas = () => (
+  <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
+);
+const Contatos = () => (
+  <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />
+);
+
+export default class Principal extends Component {
+  state = {
+    index: 0,
+    routes: [
+      { key: 'first', title: 'First' },
+      { key: 'second', title: 'Second' },
+    ],
+  };
+
+  render() {
+    return (
+      <TabView
+        navigationState={this.state}
+        renderScene={SceneMap({
+          first: Conversas,
+          second: Contatos,
+        })}
+        onIndexChange={index => this.setState({ index })}
+        initialLayout={{ width: Dimensions.get('window').width }}
+      />
+    );
+  }
 }
 
-export default Principal;
+const styles = StyleSheet.create({
+  scene: {
+    flex: 1,
+  },
+});

@@ -11,10 +11,10 @@ export default class Routes extends Component {
     return (
         <Router sceneStyle={{ backgroundColor: '#115E54' }} titleStyle={{ color: '#fff' }} >
             <Stack key='root' sceneStyle={{ backgroundColor: '#115E54' }}>
-                <Scene titleStyle={styles.navigationBarTitleStyle} key="boasVindas" component={BoasVindas} title="Bem-Vindo" />
-                <Scene titleStyle={styles.navigationBarTitleStyle} key="formLogin" component={FormLogin} title="Login" />
-                <Scene titleStyle={styles.navigationBarTitleStyle} key="formCadastro" component={FormCadastro} title="Cadastro" />
-                <Scene titleStyle={styles.navigationBarTitleStyle} key="principal" component={Principal} title="Principal" />
+                <Scene titleStyle={styles.navigationBarTitleStyle} key="boasVindas" component={BoasVindas} title="Bem-Vindo" hideNavBar={true} />
+                <Scene titleStyle={styles.navigationBarTitleStyle} key="formLogin" component={FormLogin} title="Login" hideNavBar={true} />
+                <Scene titleStyle={styles.navigationBarTitleStyle} key="formCadastro" component={FormCadastro} title="Cadastro" hideNavBar={false} />
+                <Scene titleStyle={styles.navigationBarTitleStyle} key="principal" component={Principal} title="Principal" hideNavBar={true} />
             </Stack>
         </Router>
     )
