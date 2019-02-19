@@ -5,16 +5,18 @@ import FormLogin from './components/FormLogin';
 import FormCadastro from './components/FormCadastro';
 import BoasVindas from './components/BoasVindas';
 import Principal from './components/Principal';
+import AdicionarContato from './components/AdicionarContato';
 
 export default class Routes extends Component {
   render() {
     return (
-        <Router sceneStyle={{ backgroundColor: '#115E54' }} titleStyle={{ color: '#fff' }} >
+        <Router navigationBarStyle={{ backgroundColor: '#115E54' }} titleStyle={{ color: '#fff' }} >
             <Stack key='root' sceneStyle={{ backgroundColor: '#115E54' }}>
                 <Scene titleStyle={styles.navigationBarTitleStyle} key="boasVindas" component={BoasVindas} title="Bem-Vindo" hideNavBar={true} />
                 <Scene titleStyle={styles.navigationBarTitleStyle} key="formLogin" component={FormLogin} title="Login" hideNavBar={true} />
                 <Scene titleStyle={styles.navigationBarTitleStyle} key="formCadastro" component={FormCadastro} title="Cadastro" hideNavBar={false} />
-                <Scene titleStyle={styles.navigationBarTitleStyle} key="principal" component={Principal} title="Principal" hideNavBar={true} />
+                <Scene titleStyle={styles.navigationBarTitleStyle} key="principal" component={Principal} title="Principal" hideNavBar={true} initial />
+                <Scene titleStyle={styles.navigationBarTitleStyle} key="adicionarContato" component={AdicionarContato} title="Adicionar Contato" hideNavBar={false} />
             </Stack>
         </Router>
     )
@@ -23,8 +25,10 @@ export default class Routes extends Component {
 
 const styles = StyleSheet.create({
     navigationBarTitleStyle: {
-      // centering for Android
      flex: 1,
-     textAlign: 'center'
+     flexDirection: 'row',
+     textAlign: 'center',
+     alignItems: 'center',
+     color: 'white'
  }
 });
